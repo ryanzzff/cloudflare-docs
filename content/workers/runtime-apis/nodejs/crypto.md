@@ -9,7 +9,7 @@ title: Crypto
 
 The `node:crypto`` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
-A subset of the the `node:crypto` module is available in Workers. All APIs in the tables below with a ✅ are supported, and unless otherwise noted, work the same way as the implementations in Node.js.
+A subset of the the `node:crypto` module is available in Workers. All APIs in the tables below with a ✅ are supported, and unless otherwise noted, work the same way as the implementations in Node.js. Additional APIs will be enabled incrementally in the future.
 
 The Workers implementation of `node:crypto` always runs in a FIPS-compliant mode. As such, APIs such as `setFips()` will not be made available.
 
