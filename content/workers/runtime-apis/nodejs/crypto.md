@@ -11,6 +11,8 @@ The `node:crypto`` module provides cryptographic functionality that includes a s
 
 A subset of the the `node:crypto` module is available in Workers. All APIs in the tables below with a ✅ are supported, and unless otherwise noted, work the same way as the implementations in Node.js.
 
+The Workers implementation of `node:crypto` always runs in a FIPS-compliant mode. As such, APIs such as `setFips()` will not be made available.
+
 The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within Cloudflare Workers.
 
 ## Classes
@@ -47,7 +49,7 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 |-----|------------|-------|
 | [createCipher](https://nodejs.org/api/crypto.html#cryptocreatecipheralgorithm-password-options) |  | Deprecated, use `createCipheriv` instead |
 | [createCipheriv](https://nodejs.org/api/crypto.html#cryptocreatecipherivalgorithm-key-iv-options) |  | |
-| [createDecipher](https://nodejs.org/api/crypto.html#cryptocreatedecipheralgorithm-password-options) |  | Deprecated, use `createDecipheriv` instead |
+| [createDecipher](https://nodejs.org/api/crypto.html#cryptocreatedecipheralgorithm-password-options) |  ❌  | Deprecated, will not be implemented. Use `createDecipheriv` instead. |
 | [createDecipheriv](https://nodejs.org/api/crypto.html#cryptocreatedecipherivalgorithm-key-iv-options) |  | |
 | [privateDecrypt](https://nodejs.org/api/crypto.html#cryptoprivatedecryptprivatekey-buffer) |  | |
 | [privateEncrypt](https://nodejs.org/api/crypto.html#cryptoprivateencryptprivatekey-buffer) |  | |
@@ -109,9 +111,9 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 
 | API | Supported? | Notes |
 |-----|------------|-------|
-| [getFips](https://nodejs.org/api/crypto.html#cryptogetfips) | ✅ | |
-| [fips](https://nodejs.org/api/crypto.html#cryptofips) | ✅ | Deprecated, use `getFips()` instead |
-| [setFips](https://nodejs.org/api/crypto.html#cryptosetfipsbool) | ✅ | |
+| [getFips](https://nodejs.org/api/crypto.html#cryptogetfips) | ❌ |  The Workers implementation of `node:crypto` always runs in a FIPS compliant mode. This API will not be supported.  |
+| [fips](https://nodejs.org/api/crypto.html#cryptofips) | ❌ |  The Workers implementation of `node:crypto` always runs in a FIPS compliant mode. This API will not be supported.  |
+| [setFips](https://nodejs.org/api/crypto.html#cryptosetfipsbool) | ❌ |  The Workers implementation of `node:crypto` always runs in a FIPS compliant mode. This API will not be supported.  |
 
 ## Random
 
@@ -128,8 +130,8 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 
 | API | Supported? | Notes |
 |-----|------------|-------|
-| [hkdf](https://nodejs.org/api/crypto.html#cryptohkdfdigest-ikm-salt-info-keylen-callback) | ✅ | Does not yet support KeyObject |
-| [hkdfSync](https://nodejs.org/api/crypto.html#cryptohkdfsyncdigest-ikm-salt-info-keylen) | ✅ | Does not yet support KeyObject |
+| [hkdf](https://nodejs.org/api/crypto.html#cryptohkdfdigest-ikm-salt-info-keylen-callback) | ✅ | Does not yet support an argument of KeyObject type for the `ikm` parameter. |
+| [hkdfSync](https://nodejs.org/api/crypto.html#cryptohkdfsyncdigest-ikm-salt-info-keylen) | ✅ | Does not yet support an argument of KeyObject type for the `ikm` parameter. |
 | [pbkdf2](https://nodejs.org/api/crypto.html#cryptopbkdf2password-salt-iterations-keylen-digest-callback) | ✅ | |
 | [pbkdf2Sync](https://nodejs.org/api/crypto.html#cryptopbkdf2password-salt-iterations-keylen-digest-callback) | ✅ | |
 | [scrypt](https://nodejs.org/api/crypto.html#cryptoscryptpassword-salt-keylen-options-callback) |  | |
