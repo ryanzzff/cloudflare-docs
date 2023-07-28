@@ -22,7 +22,7 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 | [Certificate](https://nodejs.org/api/crypto.html#class-certificate) |  | |
 | [Cipher](https://nodejs.org/api/crypto.html#class-cipher) |  | |
 | [Decipher](https://nodejs.org/api/crypto.html#class-decipher) |  | |
-| [DiffieHellman](https://nodejs.org/api/crypto.html#class-diffiehellman) | ✅ | |
+| [DiffieHellman](https://nodejs.org/api/crypto.html#class-diffiehellman) | ✅ | Generating a Diffie-Hellman key (`generateKeys()`) is not supported |
 | [DiffieHellmanGroup](https://nodejs.org/api/crypto.html#class-diffiehellmangroup) | ✅ | |
 | [ECDH](https://nodejs.org/api/crypto.html#class-ecdh) |  | |
 | [Hash](https://nodejs.org/api/crypto.html#class-hash) | ✅ | |
@@ -82,10 +82,10 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 | [createPrivateKey](https://nodejs.org/api/crypto.html#cryptocreateprivatekeykey) |  | |
 | [createPublicKey](https://nodejs.org/api/crypto.html#cryptocreatepublickeykey) |  | |
 | [createSecretKey](https://nodejs.org/api/crypto.html#cryptocreatesecretkeykey-encoding) | ✅ | |
-| [generateKey](https://nodejs.org/api/crypto.html#cryptogeneratekeytype-options-callback) | ✅ | |
-| [generateKeyPair](https://nodejs.org/api/crypto.html#cryptogeneratekeypairtype-options-callback) | ✅ | |
-| [generateKeyPairSync](https://nodejs.org/api/crypto.html#cryptogeneratekeypairsynctype-options) | ✅ | |
-| [generateKeySync](https://nodejs.org/api/crypto.html#cryptogeneratekeysynctype-options) | ✅ | |
+| [generateKey](https://nodejs.org/api/crypto.html#cryptogeneratekeytype-options-callback) | ❌ | |
+| [generateKeyPair](https://nodejs.org/api/crypto.html#cryptogeneratekeypairtype-options-callback) | ❌ | |
+| [generateKeyPairSync](https://nodejs.org/api/crypto.html#cryptogeneratekeypairsynctype-options) | ❌ | |
+| [generateKeySync](https://nodejs.org/api/crypto.html#cryptogeneratekeysynctype-options) | ❌ | |
 
 ## Sign/Verify
 
@@ -103,8 +103,8 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 | [getCipherInfo](https://nodejs.org/api/crypto.html#cryptogetcipherinfonameornid-options) |  | |
 | [getCiphers](https://nodejs.org/api/crypto.html#cryptogetciphers) | ✅ | |
 | [getCurves](https://nodejs.org/api/crypto.html#cryptogetcurves) | ✅ | |
-| [secureHeapUsed](https://nodejs.org/api/crypto.html#cryptosecureheapused) | ✅ | |
-| [setEngine](https://nodejs.org/api/crypto.html#cryptosetengineengine-flags) | ✅ | |
+| [secureHeapUsed](https://nodejs.org/api/crypto.html#cryptosecureheapused) | ❌ | |
+| [setEngine](https://nodejs.org/api/crypto.html#cryptosetengineengine-flags) | ❌ | |
 | [timingSafeEqual](https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b) | ✅ | |
 
 ## Fips
@@ -141,5 +141,5 @@ The [WebCrypto API](/workers/runtime-apis/web-crypto/) is also available within 
 
 | API | Supported? | Notes |
 |-----|------------|-------|
-| [subtle](https://nodejs.org/api/crypto.html#cryptosubtle) | ✅ | |
-| [webcrypto](https://nodejs.org/api/crypto.html#) | ✅ | |
+| [subtle](/workers/runtime-apis/web-crypto/#subtlecrypto-methods) | ✅ | |
+| [webcrypto](/workers/runtime-apis/web-crypto/) | ✅ | |
