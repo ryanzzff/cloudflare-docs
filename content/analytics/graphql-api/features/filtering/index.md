@@ -82,9 +82,19 @@ filters
 
 Operator support varies, depending on the node type and node name.
 
-#### Common operators
+#### Array operators
 
-The following operators are supported for all types:
+The following operators are supported for all array types:
+
+| Operator | Comparison                                      |
+| -------- | ----------------------------------------------- |
+| `has`    | array contains a value                          |
+| `hasall` | array contains all of a list of values          |
+| `hasany` | array contains at least one of a list of values |
+
+#### Scalar operators
+
+The following operators are supported for all scalar types:
 
 | Operator | Comparison          |
 | -------- | ------------------- |
@@ -172,6 +182,25 @@ httpRequestsAdaptiveGroups(
 WHERE datetime="2018-01-01T10:00:00Z"
   AND ((clientCountryName = "US") OR (clientCountryName = "GB"))
 ```
+
+### Filter on an array node
+
+The following GraphQL example shows how to filter an array. The SQL equivalent follows.
+
+#### GraphQL {#001}
+
+```graphql
+mnmFlowDataAdaptiveGroups(filter: {ruleIDs_has: "rule-id"}) {
+    ...
+}
+```
+
+#### SQL {#002}
+
+```sql
+WHERE has(ruleIDs, 'rule-id')
+```
+
 ### Filter end users
 
 Add the `requestSource` filter for `eyeball` to return request, data transfer, and visit data about only the end users of your website. This will exclude actions taken by Cloudflare products (for example, cache purge,  healthchecks, Workers subrequests) on your zone.  
